@@ -104,3 +104,21 @@ user_ids_by_interest = defaultdict(list)
 
 for user_id, interest in interests:
     user_ids_by_interest[interest].append(user_id)
+
+
+# as chaves são user_ids, os valores são as listas de interests para aqueel user_id
+# cria um dict com chave id_user e values os interesses
+interests_by_user_id = defaultdict(list)
+for user_id, interest in interests:
+    interests_by_user_id[user_id].append(interest)
+
+# print(interests_by_user_id)
+
+def most_common_interests_with(user):
+    return Counter(interested_user_id
+        for interest in interests_by_user_id["id"]
+        for interested_user_id in user_ids_by_interest[interest]
+        if interested_user_id != user["id"]
+    )
+
+print(most_common_interests_with(users[3]))

@@ -130,3 +130,19 @@ def most_common_interests_with(user):
     )
 
 print(most_common_interests_with(users[0]))
+
+# slario e experiencia
+# as chaves são os anos, os valores são as listas dos salarios para cada ano
+salary_by_tenue = defaultdict(list)
+
+for salary, tenue in salaries_and_tenures:
+    salary_by_tenue[tenue].append(salary)
+
+# as chaves são os anos, cada valor é a média salarial para aquele ano
+average_salary_by_tenue = {
+    tenue: sum(salaries)/len(salaries)
+    for tenue, salaries in salary_by_tenue.items()
+}
+
+print(average_salary_by_tenue)
+

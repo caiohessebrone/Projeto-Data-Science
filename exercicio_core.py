@@ -144,5 +144,31 @@ average_salary_by_tenue = {
     for tenue, salaries in salary_by_tenue.items()
 }
 
-print(average_salary_by_tenue)
+# print(average_salary_by_tenue)
 
+def tenue_bucket(tenue):
+    if tenue < 2:
+        return "less than two"
+    elif tenue < 5:
+        return "between two and five"
+    else:
+        return "more than five"
+
+# as chaves são agrupamentos dos casos, os valores são as listas
+# dos salarios para aquele agrupamento
+salary_by_tenue_bucket = defaultdict(list)
+for salary, tenue in salaries_and_tenures:
+    bucket = tenue_bucket(tenue)
+    salary_by_tenue_bucket[bucket].append(salary)
+
+# print(salary_by_tenue_bucket)
+
+# as chaves são agrupamentos dos casos, os valores são
+# a média salarial para aquelea grupamento
+# calculo da media salarial
+average_salary_by_bucket = {
+    tenue_bucket: sum(salaries)/len(salaries)
+    for tenue_bucket, salaries in salary_by_tenue_bucket.items()
+}
+
+print(average_salary_by_bucket)

@@ -116,9 +116,9 @@ for user_id, interest in interests:
 
 def most_common_interests_with(user):
     return Counter(interested_user_id
-        for interest in interests_by_user_id["id"]
+        for interest in interests_by_user_id[user["id"]]
         for interested_user_id in user_ids_by_interest[interest]
         if interested_user_id != user["id"]
     )
 
-print(most_common_interests_with(users[3]))
+print(most_common_interests_with(users[0]))
